@@ -1,0 +1,101 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account registration and role details",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The unique user identifier"
+        },
+        "email": {
+          "type": "string",
+          "description": "User email address"
+        },
+        "isAdmin": {
+          "type": "boolean",
+          "description": "Whether the user has admin role privileges"
+        }
+      },
+      "required": ["uid", "email"]
+    },
+    "HistoryRecord": {
+      "title": "Calculator History Record",
+      "description": "Saved text cost calculation history record",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "The UID of the user who owns this record"
+        },
+        "text": {
+          "type": "string",
+          "description": "The text that was analyzed"
+        },
+        "stats": {
+          "type": "object",
+          "description": "Character and date stats"
+        },
+        "cost": {
+          "type": "number",
+          "description": "Total cost of the calculation"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when the record was saved"
+        }
+      },
+      "required": ["userId", "text", "stats", "cost", "createdAt"]
+    },
+    "PriceSettings": {
+      "title": "Price Settings",
+      "description": "The active price configuration for different character types",
+      "type": "object",
+      "properties": {
+        "upper": { "type": "number" },
+        "lower": { "type": "number" },
+        "digits3cm": { "type": "number" },
+        "digits4cm": { "type": "number" },
+        "punctuation": { "type": "number" },
+        "updatedAt": { "type": "string" },
+        "updatedBy": { "type": "string" }
+      },
+      "required": ["upper", "lower", "digits3cm", "digits4cm", "punctuation"]
+    },
+    "PricePreset": {
+      "title": "Price Preset",
+      "description": "A saved template or preset of prices",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "maxLength": 100 },
+        "upper": { "type": "number" },
+        "lower": { "type": "number" },
+        "digits": { "type": "number" },
+        "digits3cm": { "type": "number" },
+        "digits4cm": { "type": "number" },
+        "punctuation": { "type": "number" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "upper", "lower", "digits", "digits3cm", "digits4cm", "punctuation", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "Stored user profile information"
+    },
+    "/history/{recordId}": {
+      "schema": "HistoryRecord",
+      "description": "Calculation history for users"
+    },
+    "/settings/{settingId}": {
+      "schema": "PriceSettings",
+      "description": "Admin price configuration"
+    },
+    "/price_presets/{presetId}": {
+      "schema": "PricePreset",
+      "description": "Saved pricing templates managed by admin"
+    }
+  }
+}

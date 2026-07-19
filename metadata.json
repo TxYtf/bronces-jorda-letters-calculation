@@ -1,0 +1,6 @@
+{
+  "name": "Text Cost Calculator",
+  "description": "Мобільний застосунок для розрахунку вартості тексту з детальним аналізом символів, розділових знаків, дат, збереженням історії та адмін-панеллю.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

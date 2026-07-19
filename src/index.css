@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Ensure that dark buttons always have a dark background and white text regardless of browser overrides */
+.dark-btn {
+  background-color: #0f172a !important;
+  color: #ffffff !important;
+}
+
+.dark-btn:hover {
+  background-color: #1e293b !important;
+}
+
+.dark-btn:disabled {
+  background-color: #475569 !important;
+  opacity: 0.5 !important;
+}
+
